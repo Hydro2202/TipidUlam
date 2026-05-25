@@ -1,0 +1,126 @@
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-aside {
+  background: var(--color-brand);
+  color: var(--color-brand-text);
+  padding: var(--space-12) var(--space-10);
+  display: flex;
+  align-items: stretch;
+}
+
+.auth-aside-inner {
+  max-width: 22rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.auth-brand {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.auth-aside-lead {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+.auth-aside-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.auth-aside-points li {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.auth-aside-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.auth-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  background: var(--color-bg);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.auth-card-header h1 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.auth-card-header p {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-8);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.auth-card-footer {
+  margin-top: var(--space-8);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+.auth-card-footer a {
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-card-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-aside {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .auth-aside-points {
+    display: none;
+  }
+}

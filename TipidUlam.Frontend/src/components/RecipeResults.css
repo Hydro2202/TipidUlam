@@ -1,0 +1,331 @@
+.results {
+  margin-top: var(--space-10);
+}
+
+.results-header {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.results-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.results-meta {
+  margin-top: var(--space-1);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.results-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.results-state {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.results-state--error {
+  color: var(--color-error);
+  background: var(--color-error-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(155, 44, 44, 0.15);
+}
+
+.results-state-title {
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.results-state-hint {
+  font-size: 0.9375rem;
+}
+
+.result-card {
+  padding: var(--space-6);
+}
+
+.result-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.result-card-heading h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.result-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.result-tags span {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+.result-cost {
+  text-align: right;
+  min-width: 8rem;
+}
+
+.result-cost-label {
+  display: block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+}
+
+.result-cost-value {
+  display: block;
+  font-size: 1.375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-success);
+}
+
+.result-cost-remaining {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+.result-description {
+  margin-top: var(--space-4);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.result-expand {
+  margin-top: var(--space-5);
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.result-expand::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--transition);
+}
+
+.result-expand.is-open::after {
+  transform: rotate(-135deg);
+}
+
+.result-expand:hover {
+  color: var(--color-accent-hover);
+}
+
+.result-details {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.ingredient-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.ingredient-table th {
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ingredient-table td {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.ingredient-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.results-subheading {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-2);
+}
+
+.results-subhint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+}
+
+.result-card--over {
+  border-color: rgba(155, 44, 44, 0.35);
+}
+
+.result-cost-value.is-updating {
+  opacity: 0.6;
+}
+
+.result-cost-remaining.is-over {
+  color: var(--color-error);
+}
+
+.edit-hint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.scale-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+  cursor: pointer;
+}
+
+.scale-option input {
+  margin-top: 0.2rem;
+  accent-color: var(--color-brand);
+}
+
+.ingredient-table--editable .cell-input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.cell-input {
+  width: 4.5rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  background: var(--color-surface-raised);
+}
+
+.cell-input:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 2px rgba(30, 58, 47, 0.12);
+}
+
+.cell-input:disabled {
+  background: var(--color-bg);
+  color: var(--color-text-subtle);
+}
+
+.cell-prefix {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.cell-unit {
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+  white-space: nowrap;
+}
+
+.pantry-badge {
+  display: inline-block;
+  margin-left: var(--space-2);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.row-pantry .cell-input:not(:disabled) {
+  opacity: 0.85;
+}
+
+.result-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.recalc-status {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.result-instructions {
+  margin-top: var(--space-6);
+}
+
+.result-instructions h4 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-3);
+}
+
+.result-instructions pre {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .result-card-top {
+    flex-direction: column;
+  }
+
+  .result-cost {
+    text-align: left;
+  }
+}
