@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace TipidUlam.Backend.Models
 {
@@ -13,6 +14,7 @@ namespace TipidUlam.Backend.Models
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties
+        [JsonIgnore]
         public Recipe Recipe { get; set; }
         public Ingredient Ingredient { get; set; }
     }

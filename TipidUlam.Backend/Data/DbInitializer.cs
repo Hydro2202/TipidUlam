@@ -21,10 +21,23 @@ namespace TipidUlam.Backend.Data
 
             await context.Database.EnsureCreatedAsync();
 
-            if (await context.Ingredients.AnyAsync())
+            var recipeCount = await context.Recipes.CountAsync();
+            const int expectedSampleRecipeCount = 14;
+
+            if (recipeCount >= expectedSampleRecipeCount && await context.Ingredients.AnyAsync())
             {
-                logger.LogInformation("Database already contains data.");
+                logger.LogInformation("Database already contains sample data ({RecipeCount} recipes).", recipeCount);
                 return;
+            }
+
+            if (recipeCount > 0 && recipeCount < expectedSampleRecipeCount)
+            {
+                logger.LogInformation(
+                    "Database contains {RecipeCount}/{ExpectedRecipeCount} sample recipes. Recreating and reloading sample data.",
+                    recipeCount,
+                    expectedSampleRecipeCount);
+                await context.Database.EnsureDeletedAsync();
+                await context.Database.EnsureCreatedAsync();
             }
 
             var sampleDataPath = Path.Combine(env.ContentRootPath, "sample-data.sql");
