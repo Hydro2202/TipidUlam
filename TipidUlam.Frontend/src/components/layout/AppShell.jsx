@@ -16,11 +16,24 @@ const AppShell = ({ children }) => {
     <div className="shell">
       <header className="shell-header">
         <div className="shell-header-inner">
-          <Link to="/" className="shell-logo">
+          <Link to="/" className="shell-logo shell-logo--brand">
             TipidUlam
           </Link>
           <nav className="shell-nav" aria-label="Account">
-            <span className="shell-user">{user?.username}</span>
+            <Link to="/pantry" className="nav-link" title="View pantry">
+              Pantry
+            </Link>
+
+            <button
+              type="button"
+              className="btn btn-profile"
+              onClick={() => navigate('/profile')}
+              title="View profile"
+            >
+              <span className="profile-avatar">{user?.username?.charAt(0).toUpperCase()}</span>
+              <span className="profile-username">{user?.username}</span>
+            </button>
+
             <button type="button" className="btn btn-ghost btn-sm" onClick={handleLogout}>
               Sign out
             </button>

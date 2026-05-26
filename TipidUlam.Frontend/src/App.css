@@ -15,3 +15,94 @@
   background: var(--color-border-strong);
   border-radius: 3px;
 }
+
+/* Boot / splash screen */
+.boot-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-brand) 0%, #0f2818 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.boot-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(184, 74, 31, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(30, 58, 47, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.splash-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  animation: splash-fade-in 800ms ease-out forwards;
+}
+
+.splash-title {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-brand-text);
+  margin: 0 0 1rem;
+  line-height: 1.1;
+  animation: splash-scale-in 1000ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.splash-subtitle {
+  font-size: 1.125rem;
+  color: rgba(232, 240, 235, 0.8);
+  margin: 0;
+  animation: splash-fade-in 1200ms ease-out 200ms forwards;
+  opacity: 0;
+}
+
+@keyframes splash-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splash-scale-in {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.boot-spinner,
+.small-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 5px solid var(--color-border-strong);
+  border-top-color: var(--color-accent);
+  animation: spin 900ms linear infinite;
+}
+
+.small-spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 3px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

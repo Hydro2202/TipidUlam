@@ -16,5 +16,6 @@ namespace TipidUlam.Backend.Models
 
         // Navigation properties
         public ICollection<IngredientPriceHistory> PriceHistoryChanges { get; set; } = new List<IngredientPriceHistory>();
+        public ICollection<UserPantry> PantryItems { get; set; } = new List<UserPantry>();
     }
 }

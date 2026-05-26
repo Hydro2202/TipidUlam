@@ -36,9 +36,11 @@ namespace TipidUlam.Backend
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserPantryRepository, UserPantryRepository>();
 
             services.AddScoped<IBudgetMatchingService, BudgetMatchingService>();
             services.AddScoped<IIngredientService, IngredientService>();
+            services.AddScoped<IUserPantryService, UserPantryService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITokenService, TokenService>();
 
