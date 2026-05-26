@@ -7,6 +7,8 @@ import AppShell from './components/layout/AppShell';
 import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
 import PlannerPage from './pages/PlannerPage';
+import ProfilePage from './components/ProfilePage';
+import PantryPage from './components/PantryPage';
 import './App.css';
 
 const PublicOnlyRoute = ({ children }) => {
@@ -15,8 +17,10 @@ const PublicOnlyRoute = ({ children }) => {
   if (initializing) {
     return (
       <div className="boot-screen">
-        <div className="boot-spinner" aria-hidden="true" />
-        <p>Loading…</p>
+        <div className="splash-container">
+          <h1 className="splash-title">TipidUlam</h1>
+          <p className="splash-subtitle">Plan meals that fit your budget</p>
+        </div>
       </div>
     );
   }
@@ -53,6 +57,26 @@ function AppRoutes() {
           <ProtectedRoute>
             <AppShell>
               <PlannerPage />
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <AppShell>
+              <ProfilePage />
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/pantry"
+        element={
+          <ProtectedRoute>
+            <AppShell>
+              <PantryPage />
             </AppShell>
           </ProtectedRoute>
         }

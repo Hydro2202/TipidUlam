@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 using TipidUlam.Backend.Configuration;
 using TipidUlam.Backend.Data;
 using TipidUlam.Backend.Repositories;
@@ -35,9 +36,11 @@ namespace TipidUlam.Backend
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserPantryRepository, UserPantryRepository>();
 
             services.AddScoped<IBudgetMatchingService, BudgetMatchingService>();
             services.AddScoped<IIngredientService, IngredientService>();
+            services.AddScoped<IUserPantryService, UserPantryService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITokenService, TokenService>();
 
@@ -74,16 +77,16 @@ namespace TipidUlam.Backend
             {
                 options.AddPolicy("AllowReactApp",
                     builder => builder
-                        .WithOrigins(
-                            "http://localhost:3000",
-                            "https://localhost:3000",
-                            "http://127.0.0.1:3000",
-                            "https://127.0.0.1:3000")
+                        .AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                });
             services.AddSwaggerGen();
         }
 

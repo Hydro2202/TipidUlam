@@ -14,6 +14,7 @@ namespace TipidUlam.Backend.Data
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
         public DbSet<IngredientPriceHistory> IngredientPriceHistory { get; set; }
+        public DbSet<UserPantry> UserPantry { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -109,6 +110,30 @@ namespace TipidUlam.Backend.Data
                     .HasForeignKey(ph => ph.ChangedBy)
                     .OnDelete(DeleteBehavior.SetNull);
                 entity.HasIndex(ph => ph.IngredientId);
+            });
+
+            modelBuilder.Entity<UserPantry>(entity =>
+            {
+                entity.ToTable("user_pantry");
+                entity.HasKey(up => up.Id);
+                entity.Property(up => up.Id).HasColumnName("id");
+                entity.Property(up => up.UserId).HasColumnName("user_id");
+                entity.Property(up => up.IngredientId).HasColumnName("ingredient_id");
+                entity.Property(up => up.Quantity).HasColumnName("quantity").HasPrecision(10, 3);
+                entity.Property(up => up.Notes).HasColumnName("notes").HasMaxLength(500);
+                entity.Property(up => up.AddedAt).HasColumnName("added_at");
+                entity.Property(up => up.UpdatedAt).HasColumnName("updated_at");
+                entity.HasOne(up => up.User)
+                    .WithMany(u => u.PantryItems)
+                    .HasForeignKey(up => up.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(up => up.Ingredient)
+                    .WithMany()
+                    .HasForeignKey(up => up.IngredientId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                entity.HasIndex(up => up.UserId);
+                entity.HasIndex(up => up.IngredientId);
+                entity.HasAlternateKey(up => new { up.UserId, up.IngredientId });
             });
         }
     }

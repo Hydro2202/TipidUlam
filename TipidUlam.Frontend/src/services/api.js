@@ -118,3 +118,29 @@ export const ingredientService = {
   getByCategory: (category) => apiFetch(`/ingredients/category/${category}`),
   getIngredientById: (id) => apiFetch(`/ingredients/${id}`),
 };
+
+export const pantryService = {
+  getPantry: () => apiFetch('/pantry'),
+
+  addIngredient: (ingredientId, quantity, notes = '') =>
+    apiFetch('/pantry', {
+      method: 'POST',
+      body: JSON.stringify({ ingredientId, quantity, notes }),
+    }),
+
+  updateIngredient: (pantryItemId, quantity, notes = '') =>
+    apiFetch(`/pantry/${pantryItemId}`, {
+      method: 'PUT',
+      body: JSON.stringify({ quantity, notes }),
+    }),
+
+  removeItem: (pantryItemId) =>
+    apiFetch(`/pantry/${pantryItemId}`, {
+      method: 'DELETE',
+    }),
+
+  removeByIngredient: (ingredientId) =>
+    apiFetch(`/pantry/ingredient/${ingredientId}`, {
+      method: 'DELETE',
+    }),
+};
